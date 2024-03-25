@@ -1,0 +1,22 @@
+@import "bootstrap-icons/font/bootstrap-icons.css";
+*{
+    font-family:Arial, Helvetica, sans-serif;
+}
+.navbar .navbar-toggler{
+border: none;
+padding: 0;
+--bs-navbar-toggler-icon-bg:url('');
+}
+
+// Override the default Bootstrap navbar toggler icon
+.navbar .navbar-toggler-icon::before {
+    content: url("../images/nav_close.svg");
+}
+
+// Override the toggled state of the navbar-toggler icon
+.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+    content: url("../images/nav_open.svg");
+}
+$primary:#56b3fb;
+
+@import "bootstrap/scss/bootstrap";
