@@ -11,8 +11,8 @@ class Article extends Model
 
     protected $guarded = [];
 
-    public function admin()
+    public function user()
     {
-        return $this->belongsTo(Admin::class);
+        return $this->belongsTo(User::class);
     }
 }

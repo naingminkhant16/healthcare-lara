@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
-            $table->foreignId('admin_id');
+            $table->foreignId('user_id');
             $table->date('publish_date');
             $table->string('image')->nullable();
             $table->timestamps();

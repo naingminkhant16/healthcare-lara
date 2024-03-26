@@ -34,7 +34,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  m-auto mb-2 mb-lg-0 align-items-center">
                 <li class="nav-item">
-                    <a class="nav-link active text-primary" aria-current="page" href="#">Home</a>
+                    <a class="nav-link @if(request()->routeIs('public.home')) active text-primary @endif "
+                        aria-current="page" href="{{route('public.home')}}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
@@ -48,18 +49,40 @@
                 <li class="nav-item">
                     <a class="nav-link" href="">Contact</a>
                 </li>
+                @guest
                 <li class="nav-item">
-                    <a class="nav-link" href="">Login</a>
+                    <a class="nav-link @if(request()->routeIs('loginForm')) active text-primary @endif"
+                        href="{{route('loginForm')}}">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Register</a>
+                    <a class="nav-link @if(request()->routeIs('registerForm')) active text-primary @endif"
+                        href="{{route('registerForm')}}">Register</a>
                 </li>
+                @endguest
+                @auth
+                <li class="nav-item">
+                    <small class="nav-link mb-0 d-inline-block">
+                        <span class="text-primary"><i
+                                class="bi bi-person-fill"></i>{{auth()->user()->name}}</span></small>
+                </li>
+                <li class="nav-item">
+                    <button type="submit" class="border-0 bg-white nav-link text-danger" form="logout">
+                        <i class="bi bi-box-arrow-right me-1"></i>Logout</button>
+                </li>
+                <form action="{{route('logout')}}" method="POST" id="logout" class="d-none">
+                    @csrf
+                </form>
+                @endauth
             </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control form-control-sm me-1" type="search"
-                    placeholder="Search events or articles..." aria-label="Search">
-                <button class="btn btn-primary btn-sm" type="submit"><i class="bi bi-search text-white"></i></button>
-            </form>
+            <div>
+
+                <form class="d-flex" role="search">
+                    <input class="form-control form-control-sm me-1" type="search"
+                        placeholder="Search events or articles..." aria-label="Search">
+                    <button class="btn btn-primary btn-sm" type="submit"><i
+                            class="bi bi-search text-white"></i></button>
+                </form>
+            </div>
         </div>
     </div>
 </nav>

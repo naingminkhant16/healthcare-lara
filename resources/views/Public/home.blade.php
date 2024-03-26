@@ -12,6 +12,4 @@
         <x-events-section />
     </div>
 </div>
-
-
 @endsection
