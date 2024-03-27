@@ -21,7 +21,7 @@
             <div class="p-4 rounded-3 shadow border">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="">
-                        <h3 class="text-black-50">40</h3>
+                        <h3 class="text-black-50">{{$total_events}}</h3>
                         <span class="text-black-50">Total Events</span>
                     </div>
                     <div class="">

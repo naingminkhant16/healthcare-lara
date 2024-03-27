@@ -23,19 +23,19 @@
                     <ul class="list-group">
                         <a href="{{route('admin.dashboard')}}"
                             class="list-group-item @if(request()->routeIs('admin.dashboard')) active text-white @else text-primary @endif">
-                            Dashboard
+                            <i class="bi bi-bar-chart"></i> Dashboard
                         </a>
                         <a class="list-group-item @if(request()->routeIs('events.index')) active text-white @else text-primary @endif"
                             href="{{route('events.index')}}">
-                            Events
+                            <i class="bi bi-calendar2-event"></i> Events
                         </a>
                         <a class="list-group-item @if(request()->routeIs('')) active text-white @else text-primary @endif"
                             href="">
-                            Articles
+                            <i class="bi bi-book-half"></i> Articles
                         </a>
                         <a class="list-group-item @if(request()->routeIs('')) active text-white @else text-primary @endif"
                             href="">
-                            Users
+                            <i class="bi bi-person"></i> Users
                         </a>
                     </ul>
                     <hr>

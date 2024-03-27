@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminEventController extends Controller
 {
@@ -12,7 +13,7 @@ class AdminEventController extends Controller
      */
     public function index()
     {
-        return view('Admin.Event.index', ['events' => Event::all()]);
+        return view('Admin.Event.index', ['events' => Event::latest()->paginate(2)]);
     }
 
     /**
@@ -63,7 +64,7 @@ class AdminEventController extends Controller
      */
     public function show(Event $event)
     {
-        return $event;
+        return view('Admin.Event.show', ['event' => $event]);
     }
 
     /**
@@ -71,7 +72,7 @@ class AdminEventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        return view('Admin.Event.edit', ['event' => $event]);
     }
 
     /**
@@ -79,7 +80,35 @@ class AdminEventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        $request->validate([
+            'title' => 'required|min:3',
+            'description' => 'required|min:5|max:1500',
+            'date' => 'required|date',
+            'image' => 'image|file|max:255',
+            'time' => 'required',
+            'location' => 'required',
+        ]);
+
+        $event->title = $request->title;
+        $event->description = $request->description;
+        $event->date = $request->date;
+        $event->time = $request->time;
+        $event->location = $request->location;
+        //save image
+        if ($request->image) {
+            //delete old photo
+            Storage::delete('public/' . $event->image);
+
+            //generate unique image name
+            $imageName = uniqid() . "_event_photo_" . $request->image->extension();
+            //save to storage
+            $request->image->storeAs('public', $imageName);
+            //save to database
+            $event->image = $imageName;
+        }
+        $event->update();
+
+        return redirect()->route('events.index')->with('message', "Successfully updated");
     }
 
     /**
