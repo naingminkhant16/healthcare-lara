@@ -45,9 +45,36 @@
                             class="mb-1 mb-md-0 btn btn-primary btn-sm text-white">Details</a>
                         <a href="{{route('events.edit',$event->id)}}"
                             class="mb-1 mb-md-0 btn btn-secondary btn-sm text-white">Edit</a>
-                        <a class="mb-1 mb-md-0 btn btn-danger btn-sm text-white">Delete</a>
+                        <button type="button" class="mb-1 mb-md-0 btn btn-danger btn-sm text-white"
+                            data-bs-toggle="modal" data-bs-target="#model_{{$event->id}}">Delete</button>
                     </td>
                 </tr>
+                <!-- Modal -->
+                <div class="modal fade" id="model_{{$event->id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                                Are you sure you want to delete?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary"
+                                    data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-danger text-white"
+                                    form="deleteEvent{{$event->id}}">Confirm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form action="{{route('events.destroy',$event->id)}}" class="d-none" method="POST"
+                    id="deleteEvent{{$event->id}}">
+                    @csrf
+                    @method('delete')
+                </form>
                 @endforeach
 
             </tbody>

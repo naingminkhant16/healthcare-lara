@@ -9,7 +9,7 @@
         <x-articles-section />
     </div>
     <div class=" mb-5" style="margin-top: 150px">
-        <x-events-section />
+        <x-events-section :events="$events" />
     </div>
 </div>
 @endsection

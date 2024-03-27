@@ -13,7 +13,7 @@ class AdminEventController extends Controller
      */
     public function index()
     {
-        return view('Admin.Event.index', ['events' => Event::latest()->paginate(2)]);
+        return view('Admin.Event.index', ['events' => Event::latest()->paginate(10)]);
     }
 
     /**
@@ -116,6 +116,13 @@ class AdminEventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        if ($event->image) {
+            //delete photo
+            Storage::delete('public/' . $event->image);
+        }
+
+        $event->delete();
+
+        return redirect()->route('events.index')->with('message', 'Successfully deleted.');
     }
 }

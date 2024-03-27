@@ -16,10 +16,10 @@
 
             <div
                 class="col-5 col-md-4  d-flex justify-content-md-end align-items-md-center align-items-end justify-content-end">
-                <a href="" class="bg-primary text-white p-1  me-1"><small> <i class="bi bi-facebook"></i></small></a>
-                <a href="" class="bg-primary text-white p-1  me-1"><small> <i class="bi bi-twitter-x"></i></small></a>
-                <a href="" class="bg-primary text-white p-1  me-1"> <small> <i class="bi bi-linkedin"></i></small></a>
-                <a href="" class="bg-primary text-white p-1  me-1"> <small> <i class="bi bi-instagram"></i></small></a>
+                <a href="#" class="bg-primary text-white p-1  me-1"><small> <i class="bi bi-facebook"></i></small></a>
+                <a href="#" class="bg-primary text-white p-1  me-1"><small> <i class="bi bi-twitter-x"></i></small></a>
+                <a href="#" class="bg-primary text-white p-1  me-1"> <small> <i class="bi bi-linkedin"></i></small></a>
+                <a href="#" class="bg-primary text-white p-1  me-1"> <small> <i class="bi bi-instagram"></i></small></a>
             </div>
         </div>
     </div>
@@ -38,13 +38,15 @@
                         aria-current="page" href="{{route('public.home')}}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link @if(request()->routeIs('public.about-us')) active text-primary @endif"
+                        href="{{route('public.about-us')}}">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">Articles</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Events</a>
+                    <a class="nav-link @if(request()->routeIs('public.events')) active text-primary @endif"
+                        href="{{route('public.events')}}">Events</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">Contact</a>
@@ -60,19 +62,33 @@
                 </li>
                 @endguest
                 @auth
-                <li class="nav-item">
-                    <small class="nav-link mb-0 d-inline-block">
-                        <span class="text-primary"><i
-                                class="bi bi-person-fill"></i>{{auth()->user()->name}}</span></small>
+                <li class="nav-item dropdown">
+                    <small class="nav-link dropdown-toggle mb-0 d-inline-block" data-bs-toggle="dropdown" role="button"
+                        aria-expanded="false">
+                        <span class="text-primary">
+                            <i class="bi bi-person-fill"></i>{{auth()->user()->name}}
+                        </span>
+                    </small>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <button type="submit" class="p-1 ps-3 dropdown-item border-0 bg-white nav-link text-danger"
+                                form="logout">
+                                <i class="bi bi-box-arrow-right me-1"></i>Logout
+                            </button>
+                        </li>
+                    </ul>
                 </li>
+                @if (auth()->user()->is_admin)
                 <li class="nav-item">
-                    <button type="submit" class="border-0 bg-white nav-link text-danger" form="logout">
-                        <i class="bi bi-box-arrow-right me-1"></i>Logout</button>
+                    <a class="nav-link" href="{{route('admin.dashboard')}}"><i class="bi bi-bar-chart me-1"></i>
+                        Dashboard</a>
                 </li>
+                @endif
                 <form action="{{route('logout')}}" method="POST" id="logout" class="d-none">
                     @csrf
                 </form>
                 @endauth
+
             </ul>
             <div>
 

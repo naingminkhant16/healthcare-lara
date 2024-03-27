@@ -8,7 +8,7 @@
             <div class="p-4 rounded-3 shadow border">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="">
-                        <h3 class="text-black-50">30</h3>
+                        <h3 class="text-black-50">{{$total_users}}</h3>
                         <span class="text-black-50">Total Users</span>
                     </div>
                     <div class="">
@@ -34,7 +34,7 @@
             <div class="border p-4 rounded-3 shadow">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="">
-                        <h3 class="text-black-50">40</h3>
+                        <h3 class="text-black-50">{{$total_articles}}</h3>
                         <span class="text-black-50">Total Articles</span>
                     </div>
                     <div class="">

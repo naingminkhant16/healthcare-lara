@@ -20,7 +20,7 @@ class AuthController extends Controller
         ]);
 
         if (auth()->attempt($formData)) {
-            return redirect()->route('admin.dashboard');
+            return back();
         }
         return back()->withErrors([
             'error' => 'Your email or password is incorrect'

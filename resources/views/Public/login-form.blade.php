@@ -12,6 +12,11 @@
             </ul>
         </div>
         @endif
+        @if (Session::has('message'))
+        <div class="alert alert-info">
+            {{session('message')}}
+        </div>
+        @endif
         <form action="{{route('login')}}" method="POST">
             @csrf
             <div class="mb-3">
@@ -26,6 +31,7 @@
                 <button type="submit" class="btn btn-primary text-white w-100">Login</button>
             </div>
         </form>
+        <p class="text-black-50 mt-3">Don't have account?<a href="{{route('registerForm')}}"> Register Now</a></p>
     </div>
 </div>
 @endsection
