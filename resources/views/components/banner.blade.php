@@ -9,8 +9,8 @@
                 nemo dolorem tempora
                 corporis vel hic, error praesentium mollitia omnis dolores impedit iusto voluptate reiciendis iste quod.
                 Dolorum.</p>
-            <a href="" class="btn btn-primary btn-lg text-white">View Events</a>
-            <a href="" class="btn btn-outline-primary btn-lg">About Us</a>
+            <a href="{{route('public.events')}}" class="btn btn-primary btn-lg text-white">View Events</a>
+            <a href="{{route('public.about-us')}}" class="btn btn-outline-primary btn-lg">About Us</a>
         </div>
     </div>
     <div class="col-md-6 d-flex justify-content-center  align-items-center ">

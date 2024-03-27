@@ -33,8 +33,8 @@
                             href="">
                             <i class="bi bi-book-half"></i> Articles
                         </a>
-                        <a class="list-group-item @if(request()->routeIs('')) active text-white @else text-primary @endif"
-                            href="">
+                        <a class="list-group-item @if(request()->routeIs('admin.users.index')) active text-white @else text-primary @endif"
+                            href="{{route('admin.users.index')}}">
                             <i class="bi bi-person"></i> Users
                         </a>
                     </ul>
