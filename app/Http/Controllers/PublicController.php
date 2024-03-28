@@ -11,7 +11,7 @@ class PublicController extends Controller
     public  function home()
     {
         $events = Event::latest()->limit(2)->get();
-        $articles = Article::latest()->limit(2)->get();
+        $articles = Article::latest()->limit(3)->get();
 
         return view('Public.home', [
             'events' => $events,
@@ -32,5 +32,15 @@ class PublicController extends Controller
     public function aboutUs()
     {
         return view('Public.about-us');
+    }
+
+    public function articleShow(Article $article)
+    {
+        return view('Public.article-details', ['article' => $article]);
+    }
+
+    public function articles()
+    {
+        return view('Public.articles', ['articles' => Article::latest()->paginate(6)]);
     }
 }

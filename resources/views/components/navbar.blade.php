@@ -42,7 +42,8 @@
                         href="{{route('public.about-us')}}">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Articles</a>
+                    <a class="nav-link  @if(request()->routeIs('public.articles')) active text-primary @endif"
+                        href="{{route('public.articles')}}">Articles</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link @if(request()->routeIs('public.events')) active text-primary @endif"

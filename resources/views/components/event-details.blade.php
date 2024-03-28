@@ -6,17 +6,17 @@
         {{session('message')}}
     </div>
     @endif
-    <h1 class="fs-2 fw-bold text-center text-capitalize">{{$event->title}}</h1>
+    <h1 class="fs-2 fw-bold text-capitalize">{{$event->title}}</h1>
     <div class="text-center mt-5 mb-5">
         <img src="{{asset('/storage/'.$event->image)}}" class="img-fluid m-auto" alt="event image">
     </div>
     <div class="row g-0 mb-3">
-        <p class="col-md-4 text-black-50 "><i class="bi bi-alarm"></i> Time :
+        <p class="col-md-4 text-black-50 text-center"><i class="bi bi-alarm"></i> Time :
             {{\Carbon\Carbon::parse($event->time)->format('h:i
             A')}}</p>
-        <p class="col-md-4 text-black-50 "><i class="bi bi-calendar-event"></i> Date :
+        <p class="col-md-4 text-black-50 text-center "><i class="bi bi-calendar-event"></i> Date :
             {{\Carbon\Carbon::parse($event->date)->toFormattedDateString()}}</p>
-        <p class="col-md-4 text-black-50"><i class="bi bi-geo-alt"></i> Location :
+        <p class="col-md-4 text-black-50 text-center"><i class="bi bi-geo-alt"></i> Location :
             {{$event->location}}</p>
     </div>
     <div class="mb-5">

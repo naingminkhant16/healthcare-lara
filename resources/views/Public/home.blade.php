@@ -6,7 +6,7 @@
         <x-about-us />
     </div>
     <div class="mb-5">
-        <x-articles-section />
+        <x-articles-section :articles="$articles" />
     </div>
     <div class=" mb-5" style="margin-top: 150px">
         <x-events-section :events="$events" />

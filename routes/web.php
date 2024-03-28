@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminArticleController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminEventController;
 use App\Http\Controllers\AdminUserController;
@@ -12,11 +13,14 @@ use Illuminate\Support\Facades\Route;
 //User Public Routes
 Route::get("/", [PublicController::class, "home"])->name('public.home');
 Route::get('/about-us', [PublicController::class, 'aboutUs'])->name('public.about-us');
+//Public events routes
 Route::get('/events', [PublicController::class, 'events'])->name('public.events');
 Route::get('/events/{event}', [PublicController::class, "eventShow"])->name('public.events.show');
-
 //enroll event
 Route::post('/events/{event}/enroll', [EnrollmentController::class, 'enroll'])->name('events.enroll');
+//Public articles routes
+Route::get('/articles', [PublicController::class, 'articles'])->name('public.articles');
+Route::get('/articles/{article}', [PublicController::class, "articleShow"])->name('public.articles.show');
 
 //Admin Routes
 Route::prefix("/admin")->middleware(['auth', IsAdmin::class])->group(function () {
@@ -24,6 +28,8 @@ Route::prefix("/admin")->middleware(['auth', IsAdmin::class])->group(function ()
     Route::get('/dashboard', [AdminDashboardController::class, 'dashboard'])->name('admin.dashboard');
     //events
     Route::resource('/events', AdminEventController::class);
+    //articles
+    Route::resource('/articles', AdminArticleController::class);
     //users
     Route::get('/users', [AdminUserController::class, 'index'])->name('admin.users.index');
     Route::delete('/users/{user}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');

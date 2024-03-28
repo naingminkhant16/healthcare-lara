@@ -1,7 +1,7 @@
 @extends('layouts.Public.layout')
 @section('content')
 <div class="mt-5 mb-5">
-    <div class="m-auto border shadow p-5 rounded" style="max-width: 480px">
+    <div class="m-auto border p-5 rounded" style="max-width: 480px">
         <h1 class="fs-1 fw-bold text-center mb-3"><span class="text-primary">Login</span> Form</h1>
         @if ($errors->any())
         <div class="alert alert-danger">
@@ -31,7 +31,8 @@
                 <button type="submit" class="btn btn-primary text-white w-100">Login</button>
             </div>
         </form>
-        <p class="text-black-50 mt-3">Don't have account?<a href="{{route('registerForm')}}"> Register Now</a></p>
+        <p class="text-black-50 mt-3 text-center">Don't have account?<a href="{{route('registerForm')}}"> Register
+                Now</a></p>
     </div>
 </div>
 @endsection

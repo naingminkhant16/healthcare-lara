@@ -33,7 +33,7 @@ class AdminEventController extends Controller
             'title' => 'required|min:3',
             'description' => 'required|min:5|max:1500',
             'date' => 'required|date',
-            'image' => 'image|file|max:255',
+            'image' => 'image|file|max:255|required',
             'time' => 'required|date_format:H:i',
             'location' => 'required',
         ]);

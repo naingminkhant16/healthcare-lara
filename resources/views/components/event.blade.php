@@ -1,5 +1,5 @@
 @props(['event'])
-<div class="card mb-3 shadow">
+<div class="card mb-3">
     <div class="row g-0">
         <div class="col-md-6">
             <div class="">

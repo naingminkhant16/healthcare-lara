@@ -29,8 +29,8 @@
                             href="{{route('events.index')}}">
                             <i class="bi bi-calendar2-event"></i> Events
                         </a>
-                        <a class="list-group-item @if(request()->routeIs('')) active text-white @else text-primary @endif"
-                            href="">
+                        <a class="list-group-item @if(request()->routeIs('articles.index')) active text-white @else text-primary @endif"
+                            href="{{route('articles.index')}}">
                             <i class="bi bi-book-half"></i> Articles
                         </a>
                         <a class="list-group-item @if(request()->routeIs('admin.users.index')) active text-white @else text-primary @endif"
