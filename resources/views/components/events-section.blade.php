@@ -1,8 +1,8 @@
-@props(['events'])
+@props(['events','title'=>"Our Latest"])
 <div class="">
     <div class="d-flex justify-content-between align-items-center mb-5">
         <h1 class="fs-1 fw-bold">
-            Our Latest <span class="text-primary">Events</span>
+            {{$title}} <span class="text-primary">Events</span>
         </h1>
         @if(!request()->routeIs('public.events'))
         <a href="{{route('public.events')}}" class="text-decoration-none text-primary">View All <i

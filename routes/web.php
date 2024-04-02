@@ -13,14 +13,19 @@ use Illuminate\Support\Facades\Route;
 //User Public Routes
 Route::get("/", [PublicController::class, "home"])->name('public.home');
 Route::get('/about-us', [PublicController::class, 'aboutUs'])->name('public.about-us');
+Route::get('contact-us', [PublicController::class, 'contactUs'])->name('public.contact-us');
 //Public events routes
 Route::get('/events', [PublicController::class, 'events'])->name('public.events');
 Route::get('/events/{event}', [PublicController::class, "eventShow"])->name('public.events.show');
+Route::get('/events/{user}/enrolled-events', [PublicController::class, "enrolledEvents"])
+    ->middleware('auth')->name("users.enrolled.events");
 //enroll event
 Route::post('/events/{event}/enroll', [EnrollmentController::class, 'enroll'])->name('events.enroll');
 //Public articles routes
 Route::get('/articles', [PublicController::class, 'articles'])->name('public.articles');
 Route::get('/articles/{article}', [PublicController::class, "articleShow"])->name('public.articles.show');
+//Search route
+Route::get('/search', [PublicController::class, 'search'])->name('public.search');
 
 //Admin Routes
 Route::prefix("/admin")->middleware(['auth', IsAdmin::class])->group(function () {
@@ -33,6 +38,8 @@ Route::prefix("/admin")->middleware(['auth', IsAdmin::class])->group(function ()
     //users
     Route::get('/users', [AdminUserController::class, 'index'])->name('admin.users.index');
     Route::delete('/users/{user}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
+    //change user role
+    Route::patch('/users/{user}/change-role', [AdminUserController::class, 'changeRole'])->name('admin.users.changeRole');
 });
 
 //Auth Routes

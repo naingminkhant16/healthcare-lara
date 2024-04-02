@@ -7,6 +7,13 @@
             <i class="bi bi-plus-circle"></i> &nbsp;Write Article</a>
     </div>
     <hr>
+    <div class="mb-3">
+        <form action="" method="GET" class="ms-auto d-flex" style="max-width: 300px">
+            <input type="text" name="search" class="form-control form-control-sm me-1" value="{{request('search')??''}}"
+                placeholder="Search articles">
+            <button type="submit" class="btn btn-sm btn-primary text-white"><i class="bi bi-search"></i></button>
+        </form>
+    </div>
     @if (Session::has('message'))
     <div class="alert alert-info">
         {{session('message')}}
@@ -28,7 +35,7 @@
             <tbody>
                 @foreach ($articles as $article)
                 <tr>
-                    <th scope="row">{{$article->id}}</th>
+                    <th scope="row">#{{$article->id}}</th>
                     <td>{{Str::words($article->title, 5, '...')}}</td>
                     <td>{{Str::words($article->content, 5, '...')}}</td>
                     <td>{{$article->user->name}}</td>

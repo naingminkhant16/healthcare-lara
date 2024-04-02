@@ -1,8 +1,8 @@
-@props(['articles'])
+@props(['articles','title'=>'Our Latest'])
 <div class="">
     <div class="d-flex justify-content-between align-items-center mb-5">
         <h1 class="fs-1 fw-bold">
-            Our Latest <span class="text-primary">Articles</span>
+            {{$title}} <span class="text-primary">Articles</span>
         </h1>
         @if(!request()->routeIs('public.articles'))
         <a href="{{route('public.articles')}}" class="text-decoration-none text-primary">View All <i
@@ -11,7 +11,7 @@
     </div>
     <div class="row">
         @foreach ($articles as $article)
-        <div class="col-md-4">
+        <div class="col-md-4 mb-3">
             <x-article :article="$article" />
         </div>
         @endforeach

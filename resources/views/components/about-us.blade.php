@@ -7,6 +7,7 @@
     <div class="col-md-6 d-flex justify-content-center align-items-center">
         <div>
             <h1 class="fs-1 fw-bold mb-3">About Us</h1>
+            <hr>
             <p class="text-justify mb-5">
                 Lorem ipsum dolor sit amet consectetur mi veniam! Officia vel ducimus adipisicing elit. Debitis dolorum
                 itaque iure quos pariatur iste

@@ -16,16 +16,17 @@
             <div class="col-md-3 mb-5 mb-md-0">
                 <h3 class="fs-3 fw-bold">Quick Links</h3>
                 <hr>
-                <a href="" class="text-decoration-none text-white mb-3 d-block">Register</a>
-                <a href="" class="text-decoration-none text-white mb-3 d-block">Login</a>
-                <a href="" class="text-decoration-none text-white mb-3 d-block">About Us</a>
-                <a href="" class="text-decoration-none text-white mb-3 d-block">Contact Us</a>
+                <a href="{{route('registerForm')}}" class="text-decoration-none text-white mb-3 d-block">Register</a>
+                <a href="{{route('loginForm')}}" class="text-decoration-none text-white mb-3 d-block">Login</a>
+                <a href="{{route('public.about-us')}}" class="text-decoration-none text-white mb-3 d-block">About Us</a>
+                <a href="{{route('public.contact-us')}}" class="text-decoration-none text-white mb-3 d-block">Contact
+                    Us</a>
             </div>
             <div class="col-md-3 mb-5 mb-md-0">
                 <h3 class="fs-3 fw-bold">Our Service</h3>
                 <hr>
-                <a href="" class="text-decoration-none text-white mb-3 d-block">Articles</a>
-                <a href="" class="text-decoration-none text-white mb-3 d-block">Events</a>
+                <a href="{{route('public.articles')}}" class="text-decoration-none text-white mb-3 d-block">Articles</a>
+                <a href="{{route('public.events')}}" class="text-decoration-none text-white mb-3 d-block">Events</a>
             </div>
             <div class="col-md-3 d-flex justify-content-center align-items-center">
                 <div class="w-100">

@@ -9,6 +9,30 @@
     <hr>
     <div class="container">
         <x-event-details :event="$event" />
+
+        @if ($enrolledUsers->count())
+        <div class="overflow-auto m-auto" style="max-width: 680px">
+            <h4 class="fw-bold">Enrolled Users In This Event</h4>
+            <hr>
+            <table class="table  table-hover ">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($enrolledUsers as $user)
+                    <tr>
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->email}}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        @endif
     </div>
 </div>
+
 @endsection

@@ -13,7 +13,13 @@ class AdminEventController extends Controller
      */
     public function index()
     {
-        return view('Admin.Event.index', ['events' => Event::latest()->paginate(10)]);
+        $events = Event::when(request('search'), function ($query, $search) {
+            $query->where('title', 'like', "%$search%")
+                ->orWhere('description', 'like', "%$search%")
+                ->orWhere('location', 'like', "%$search%");
+        })->latest()->paginate(10);
+
+        return view('Admin.Event.index', ['events' => $events]);
     }
 
     /**
@@ -64,7 +70,12 @@ class AdminEventController extends Controller
      */
     public function show(Event $event)
     {
-        return view('Admin.Event.show', ['event' => $event]);
+        $enrolledUsers = $event->enrolledUsers;
+
+        return view('Admin.Event.show', [
+            'event' => $event,
+            'enrolledUsers' => $enrolledUsers
+        ]);
     }
 
     /**

@@ -14,7 +14,12 @@ class AdminArticleController extends Controller
      */
     public function index()
     {
-        return view('Admin.Article.index', ['articles' => Article::paginate(10)]);
+        $articles = Article::when(request('search'), function ($query, $search) {
+            $query->where('title', 'like', "%$search%")
+                ->orWhere('content', 'like', "%$search%");
+        })->latest()->paginate(10);
+
+        return view('Admin.Article.index', ['articles' => $articles]);
     }
 
     /**

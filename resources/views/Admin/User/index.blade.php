@@ -5,6 +5,13 @@
         <h1 class="fs-3 text-primary fw-bold">Users Management</h1>
     </div>
     <hr>
+    <div class="mb-3">
+        <form action="" method="GET" class="ms-auto d-flex" style="max-width: 300px">
+            <input type="text" name="search" class="form-control form-control-sm me-1" value="{{request('search')??''}}"
+                placeholder="Search users...">
+            <button type="submit" class="btn btn-sm btn-primary text-white"><i class="bi bi-search"></i></button>
+        </form>
+    </div>
     @if (Session::has('message'))
     <div class="alert alert-info">
         {{session('message')}}
@@ -24,7 +31,7 @@
             <tbody>
                 @foreach ($users as $user)
                 <tr>
-                    <th scope="row">{{$user->id}}</th>
+                    <th scope="row">#{{$user->id}}</th>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
                     <td>
@@ -32,6 +39,14 @@
                         <span class="badge text-bg-danger text-white">Admin</span>
                         @else
                         <span class="badge text-bg-primary text-white">User</span>
+                        @endif
+                        @if ($user->id!=auth()->id())
+                        <form action="{{route('admin.users.changeRole',$user->id)}}" method="POST"
+                            class="d-inline-block">
+                            @csrf
+                            @method('PATCH')
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Change Role</button>
+                        </form>
                         @endif
                     </td>
                     <td>

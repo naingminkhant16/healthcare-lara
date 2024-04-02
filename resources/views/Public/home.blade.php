@@ -8,7 +8,7 @@
     <div class="mb-5">
         <x-articles-section :articles="$articles" />
     </div>
-    <div class=" mb-5" style="margin-top: 150px">
+    <div class="mb-5">
         <x-events-section :events="$events" />
     </div>
 </div>

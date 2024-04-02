@@ -50,7 +50,8 @@
                         href="{{route('public.events')}}">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Contact</a>
+                    <a class="nav-link @if(request()->routeIs('public.contact-us')) active text-primary @endif"
+                        href="{{route('public.contact-us')}}">Contact</a>
                 </li>
                 @guest
                 <li class="nav-item">
@@ -77,6 +78,13 @@
                                 <i class="bi bi-box-arrow-right me-1"></i>Logout
                             </button>
                         </li>
+                        @if (!auth()->user()->is_admin)
+                        <li>
+                            <a href="{{route('users.enrolled.events',auth()->id())}}" class="dropdown-item"><i
+                                    class="bi bi-calendar-event me-1"></i>Enrolled
+                                Events</a>
+                        </li>
+                        @endif
                     </ul>
                 </li>
                 @if (auth()->user()->is_admin)
@@ -92,12 +100,11 @@
 
             </ul>
             <div>
-
-                <form class="d-flex" role="search">
+                <form class="d-flex" action="{{route('public.search')}}" role="search" method="GET">
                     <input class="form-control form-control-sm me-1" type="search"
-                        placeholder="Search events or articles..." aria-label="Search">
-                    <button class="btn btn-primary btn-sm" type="submit"><i
-                            class="bi bi-search text-white"></i></button>
+                        placeholder="Search events or articles..." aria-label="Search" name="search">
+                    <button class="btn btn-primary btn-sm" type="submit">
+                        <i class="bi bi-search text-white"></i></button>
                 </form>
             </div>
         </div>
