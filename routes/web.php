@@ -21,6 +21,8 @@ Route::get('/events/{user}/enrolled-events', [PublicController::class, "enrolled
     ->middleware('auth')->name("users.enrolled.events");
 //enroll event
 Route::post('/events/{event}/enroll', [EnrollmentController::class, 'enroll'])->name('events.enroll');
+//cancel event
+Route::delete('/events/{event}/cancel', [EnrollmentController::class, 'cancel'])->middleware('auth')->name('events.cancel');
 //Public articles routes
 Route::get('/articles', [PublicController::class, 'articles'])->name('public.articles');
 Route::get('/articles/{article}', [PublicController::class, "articleShow"])->name('public.articles.show');

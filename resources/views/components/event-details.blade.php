@@ -36,6 +36,29 @@
         </form>
         @else
         <p class="mb-0 text-black-50">You have enrolled in this event.</p>
+        <button class="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#model" type="button">
+            Cancel Enrollment</button>
+        <!-- Modal -->
+        <div class="modal fade" id="model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        Are you sure you want to cancel event?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger text-white" form="cancelEvent">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form action="{{route('events.cancel',$event->id)}}" class="d-none" method="POST" id="cancelEvent">
+            @csrf
+            @method('delete')
+        </form>
         @endif
     </div>
 </div>

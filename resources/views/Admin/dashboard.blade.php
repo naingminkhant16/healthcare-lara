@@ -2,7 +2,6 @@
 @section('content')
 
 <div>
-
     <div class="row g-3">
         <div class="col-12 col-md-4">
             <div class="p-4 rounded-3 shadow border">
@@ -45,5 +44,13 @@
         </div>
 
     </div>
+    <div class="mt-5 m-auto" style="max-width: 600px">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script type="module">
+        window.showChart({{$total_users}},{{$total_events}},{{$total_articles}})
+    </script>
+
 </div>
 @endsection

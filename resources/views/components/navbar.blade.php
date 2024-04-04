@@ -26,7 +26,8 @@
 </div>
 <nav class="navbar navbar-expand-lg bg-body-white  border-bottom sticky-top bg-white shadow-sm">
     <div class="container">
-        <a class="navbar-brand  text-primary rounded-3" href="#"><i class="bi bi-hospital fs-3"></i> </a>
+        <a class="navbar-brand  text-primary rounded-3" href="{{route('public.home')}}"><i
+                class="bi bi-hospital fs-3"></i> </a>
         <div class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
