@@ -5,10 +5,12 @@
                 <span class="text-primary">Health</span> is the wealth of <span class="text-primary">Wealth</span>.
                 Be <span class="text-primary">Work-Life</span> Balance.
             </h1>
-            <p class=" text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi neque, ad quibusdam
-                nemo dolorem tempora
-                corporis vel hic, error praesentium mollitia omnis dolores impedit iusto voluptate reiciendis iste quod.
-                Dolorum.</p>
+            <p class="" style="text-align:justify;">&emsp;Welcome to our website, your go-to destination for reliable
+                healthcare articles and exciting
+                events.
+                Explore our curated collection of articles covering a wide range of medical topics and join our vibrant
+                community to stay informed and inspired. Together, let's embark on a journey towards better health and
+                well-being.</p>
             <a href="{{route('public.events')}}" class="btn btn-primary btn-lg text-white">View Events</a>
             <a href="{{route('public.about-us')}}" class="btn btn-outline-primary btn-lg">About Us</a>
         </div>

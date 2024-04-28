@@ -37,7 +37,7 @@ class AdminArticleController extends Controller
     {
         $formData =  $request->validate([
             'title' => 'required|min:5|max:200',
-            'content' => 'required|min:10|max:1500',
+            'content' => 'required|min:10|max:3000',
             'image' => 'required|image|file|max:255'
         ]);
 
@@ -85,7 +85,7 @@ class AdminArticleController extends Controller
     {
         $formData =  $request->validate([
             'title' => 'required|min:5|max:200',
-            'content' => 'required|min:10|max:1500',
+            'content' => 'required|min:10|max:3000',
             'image' => '|image|file|max:255|nullable'
         ]);
 

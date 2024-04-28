@@ -26,7 +26,7 @@ class PublicController extends Controller
 
     public function events()
     {
-        return view('Public.events', ['events' => Event::latest()->paginate(4)]);
+        return view('Public.events', ['events' => Event::latest()->paginate(6)]);
     }
 
     public function aboutUs()
